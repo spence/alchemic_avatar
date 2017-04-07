@@ -5,11 +5,11 @@ defmodule AlchemicAvatar.Mixfile do
     [app: :alchemic_avatar,
      version: "0.1.3",
      elixir: "~> 1.2",
-     description: description,
+     description: description(),
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     package: package,
-     deps: deps,
+     package: package(),
+     deps: deps(),
      docs: [extras: ["README.md"] ]
     ]
   end
@@ -20,19 +20,19 @@ defmodule AlchemicAvatar.Mixfile do
   end
 
 
-  defp deps do
+  defp deps() do
     [{:earmark, "~> 0.1", only: :dev},
     {:ex_doc, "~> 0.11", only: :dev},
     {:inch_ex, "~> 0.5", only: :docs}]
   end
 
-  defp description do
+  defp description() do
     """
     Creating letter avatar from user's name(or any other strong / character).
     """
   end
 
-  defp package do
+  defp package() do
     [maintainers: ["zhangsoledad"],
      licenses: ["MIT"],
      links: %{"Github" => "https://github.com/zhangsoledad/alchemic_avatar"},
