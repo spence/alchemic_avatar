@@ -2,7 +2,7 @@ defmodule AlchemicAvatar.Color do
   @palettes [:google, :iwanthue]
 
   def from_name(username) do
-    colors_palette = AlchemicAvatar.Config.colors_palette
+    colors_palette = AlchemicAvatar.Config.colors_palette()
     if colors_palette in @palettes do
       apply(AlchemicAvatar.Color, colors_palette, [username])
     else
@@ -12,13 +12,14 @@ defmodule AlchemicAvatar.Color do
 
   def google(username) do
     index = do_google_username(username)
-    google_tuple |> elem(index)
+    google_tuple() |> elem(index)
   end
 
   def iwanthue(username) do
-    len = tuple_size(iwanthue_tuple)
+    tuple = iwanthue_tuple()
+    len = tuple_size(tuple)
     index = username |> hexdigest |> digest_to_index(len)
-    iwanthue_tuple |> elem(index)
+    tuple |> elem(index)
   end
 
   defp do_google_username(username) do
@@ -30,7 +31,7 @@ defmodule AlchemicAvatar.Color do
       <<char, _rest::binary>> when char in 48..57 ->
        <<char>> |> String.to_integer
       <<string::binary>> ->
-        len = tuple_size(google_tuple)
+        len = tuple_size(google_tuple())
         string |> hexdigest |> digest_to_index(len)
     end
   end

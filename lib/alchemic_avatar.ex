@@ -51,12 +51,12 @@ defmodule AlchemicAvatar do
   end
 
   defp cache_path do
-    "#{AlchemicAvatar.Config.cache_base_path}/alchemic_avatar"
+    "#{AlchemicAvatar.Config.cache_base_path()}/alchemic_avatar"
   end
 
   defp dir_path(identity) do
-    path = "#{cache_path}/#{identity.letter}/#{identity.color |> Enum.join("_")}"
-    :code.priv_dir(AlchemicAvatar.Config.app_name) |> Path.join(path)
+    path = "#{cache_path()}/#{identity.letter}/#{identity.color |> Enum.join("_")}"
+    :code.priv_dir(AlchemicAvatar.Config.app_name()) |> Path.join(path)
   end
 
   defp filename(identity, size) do
@@ -76,12 +76,12 @@ defmodule AlchemicAvatar do
     System.cmd "convert", [
       "-size", "#{size}x#{size}",
       "xc:#{to_rgb(identity.color)}",
-      "-pointsize", AlchemicAvatar.Config.font_size,
+      "-pointsize", AlchemicAvatar.Config.font_size(),
       "-font", "#{@font_filename}",
-      "-weight", "#{AlchemicAvatar.Config.weight}",
-      "-fill", AlchemicAvatar.Config.fill_color,
+      "-weight", "#{AlchemicAvatar.Config.weight()}",
+      "-fill", AlchemicAvatar.Config.fill_color(),
       "-gravity", "Center",
-      "-annotate", "#{AlchemicAvatar.Config.annotate_position}", "#{identity.letter}",
+      "-annotate", "#{AlchemicAvatar.Config.annotate_position()}", "#{identity.letter}",
       "#{filename}"
     ]
     filename
