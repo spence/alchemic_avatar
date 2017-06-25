@@ -71,4 +71,11 @@ defmodule AlchemicAvatar.Config do
   def font_size do
     Keyword.get(config(), :font_size, "140")
   end
+
+  @doc """
+  font_size
+  """
+  def size do
+    Keyword.get(config(), :size, "240")
+  end
 end
