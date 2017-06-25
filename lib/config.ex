@@ -64,4 +64,11 @@ defmodule AlchemicAvatar.Config do
   def fill_color do
     Keyword.get(config, :fill_color, "rgba(255, 255, 255, 0.65)")
   end
+
+  @doc """
+  font_size
+  """
+  def font_size do
+    Keyword.get(config, :font_size, "140")
+  end
 end

@@ -76,7 +76,7 @@ defmodule AlchemicAvatar do
     System.cmd "convert", [
       "-size", "#{size}x#{size}",
       "xc:#{to_rgb(identity.color)}",
-      "-pointsize", "140",
+      "-pointsize", AlchemicAvatar.Config.font_size,
       "-font", "#{@font_filename}",
       "-weight", "#{AlchemicAvatar.Config.weight}",
       "-fill", AlchemicAvatar.Config.fill_color,
