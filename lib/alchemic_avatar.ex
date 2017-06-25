@@ -4,7 +4,6 @@ defmodule AlchemicAvatar do
   """
 
   @fullsize 240
-  @fill_color "rgba(255, 255, 255, 0.65)"
   @font_filename Path.join(__DIR__, "data/Roboto-Medium")
 
   @doc """
@@ -80,7 +79,7 @@ defmodule AlchemicAvatar do
       "-pointsize", "140",
       "-font", "#{@font_filename}",
       "-weight", "#{AlchemicAvatar.Config.weight}",
-      "-fill", "#{@fill_color}",
+      "-fill", AlchemicAvatar.Config.fill_color,
       "-gravity", "Center",
       "-annotate", "#{AlchemicAvatar.Config.annotate_position}", "#{identity.letter}",
       "#{filename}"

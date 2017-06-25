@@ -13,7 +13,7 @@ defmodule AlchemicAvatar.Config do
   | app_name  | atom  | N/A |
   """
 
-  defp config do 
+  defp config do
     Application.get_all_env(:alchemic_avatar)
   end
 
@@ -56,5 +56,12 @@ defmodule AlchemicAvatar.Config do
   """
   def annotate_position do
     Keyword.get(config, :annotate_position, "-0+5")
+  end
+
+  @doc """
+  fill_color
+  """
+  def fill_color do
+    Keyword.get(config, :fill_color, "rgba(255, 255, 255, 0.65)")
   end
 end
